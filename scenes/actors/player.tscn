@@ -1,0 +1,101 @@
+[gd_scene load_steps=8 format=3 uid="uid://j7kefl8rj04b"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_k1vq1"]
+[ext_resource type="PackedScene" uid="uid://cg3wbfbs8uttj" path="res://scenes/menu_drag_button.tscn" id="1_shnfw"]
+[ext_resource type="SpriteFrames" uid="uid://cpyfra7mywfb3" path="res://resources/pawn_blue_sprite_frames.tres" id="3_8oat6"]
+[ext_resource type="Texture2D" uid="uid://dauryui3wfb7d" path="res://assets/Tiny Swords (Update 010)/Resources/Resources/G_Idle.png" id="4_lfyem"]
+[ext_resource type="SpriteFrames" uid="uid://bvjjby72sl438" path="res://resources/house_blue_sprite_frames.tres" id="4_tbxv6"]
+[ext_resource type="Texture2D" uid="uid://0qxvqqouqeop" path="res://assets/Tiny Swords (Update 010)/Resources/Resources/W_Idle.png" id="5_o104w"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1uq1b"]
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_k1vq1")
+
+[node name="MenuTopLeft" type="Node2D" parent="."]
+position = Vector2(0, 192)
+
+[node name="MenuBottomRight" type="Node2D" parent="."]
+position = Vector2(128, 456)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 128.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="PawnButton" parent="CanvasLayer/CenterContainer/VBoxContainer" instance=ExtResource("1_shnfw")]
+layout_mode = 2
+frames = ExtResource("3_8oat6")
+label_text = "Pawn"
+
+[node name="HouseButton" parent="CanvasLayer/CenterContainer/VBoxContainer" instance=ExtResource("1_shnfw")]
+layout_mode = 2
+frames = ExtResource("4_tbxv6")
+label_text = "House"
+y_offset = -32.0
+
+[node name="ResourcesCenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ResourcesCenterContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ResourcesCenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = -30
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ResourcesCenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_lfyem")
+
+[node name="GoldLabel" type="Label" parent="CanvasLayer/ResourcesCenterContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = ": 0"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/ResourcesCenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = -30
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ResourcesCenterContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("5_o104w")
+
+[node name="WoodLabel" type="Label" parent="CanvasLayer/ResourcesCenterContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = ": 0"
+
+[node name="Units" type="Node" parent="."]
+
+[node name="MouseRadius" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 14
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseRadius"]
+shape = SubResource("CircleShape2D_1uq1b")
+
+[node name="MouseRadiusTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="button_down" from="CanvasLayer/CenterContainer/VBoxContainer/PawnButton" to="." method="_on_pawn_button_button_down"]
+[connection signal="button_down" from="CanvasLayer/CenterContainer/VBoxContainer/HouseButton" to="." method="_on_house_button_button_down"]
+[connection signal="timeout" from="MouseRadiusTimer" to="." method="_on_mouse_radius_timer_timeout"]

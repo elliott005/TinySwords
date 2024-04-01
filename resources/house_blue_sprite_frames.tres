@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://bvjjby72sl438"]
+
+[ext_resource type="Texture2D" uid="uid://fbsso7ve01na" path="res://assets/Tiny Swords (Update 010)/Factions/Knights/Buildings/House/House_Construction.png" id="1_8p1uh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4hr0w"]
+atlas = ExtResource("1_8p1uh")
+region = Rect2(0, 0, 128, 192)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4hr0w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

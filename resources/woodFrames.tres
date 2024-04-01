@@ -1,0 +1,73 @@
+[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://btjoj2xj13uoe"]
+
+[ext_resource type="Texture2D" uid="uid://0qxvqqouqeop" path="res://assets/Tiny Swords (Update 010)/Resources/Resources/W_Idle.png" id="1_7f7m5"]
+[ext_resource type="Texture2D" uid="uid://b8ripy8tmriel" path="res://assets/Tiny Swords (Update 010)/Resources/Resources/W_Spawn.png" id="1_vlj5d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvav8"]
+atlas = ExtResource("1_7f7m5")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mre4"]
+atlas = ExtResource("1_vlj5d")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bendy"]
+atlas = ExtResource("1_vlj5d")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c32d4"]
+atlas = ExtResource("1_vlj5d")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1cjob"]
+atlas = ExtResource("1_vlj5d")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jjtv"]
+atlas = ExtResource("1_vlj5d")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3b1v5"]
+atlas = ExtResource("1_vlj5d")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bm5cy"]
+atlas = ExtResource("1_vlj5d")
+region = Rect2(768, 0, 128, 128)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wvav8")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4mre4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bendy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c32d4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1cjob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jjtv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3b1v5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bm5cy")
+}],
+"loop": false,
+"name": &"Spawn",
+"speed": 7.0
+}]

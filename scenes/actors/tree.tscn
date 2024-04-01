@@ -1,0 +1,81 @@
+[gd_scene load_steps=12 format=3 uid="uid://ri56nx2gl88f"]
+
+[ext_resource type="Texture2D" uid="uid://bpa1gtr0ruibg" path="res://assets/Tiny Swords (Update 010)/Resources/Trees/Tree.png" id="1_2o1vw"]
+[ext_resource type="Script" path="res://scripts/tree.gd" id="1_sl4vb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0ata"]
+size = Vector2(40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70uew"]
+atlas = ExtResource("1_2o1vw")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8k7dt"]
+atlas = ExtResource("1_2o1vw")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2aip"]
+atlas = ExtResource("1_2o1vw")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fk2v"]
+atlas = ExtResource("1_2o1vw")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4wuq"]
+atlas = ExtResource("1_2o1vw")
+region = Rect2(0, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4sinc"]
+atlas = ExtResource("1_2o1vw")
+region = Rect2(192, 192, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nwnqe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70uew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8k7dt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2aip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fk2v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e4wuq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4sinc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_67r5r"]
+radius = 28.0
+height = 104.0
+
+[node name="Tree" type="StaticBody2D"]
+z_index = 1
+collision_mask = 0
+script = ExtResource("1_sl4vb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 64)
+shape = SubResource("RectangleShape2D_d0ata")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_nwnqe")
+
+[node name="Area2D" type="Area2D" parent="." groups=["Trees"]]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 36)
+shape = SubResource("CapsuleShape2D_67r5r")
